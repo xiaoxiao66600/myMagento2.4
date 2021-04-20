@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_HelloWorld::menu"
+             title="Test Menu" module="Codilar_HelloWorld"
+             sortOrder="1"
+             resource="Codilar_HelloWorld::menu"
+        />
+        <add id="Codilar_HelloWorld:menu_item1" title="menu item1" parent="Codilar_HelloWorld::menu" sortOrder="1"
+             action="test/create/index"
+             resource="Codilar_HelloWorld::menu_item1"
+             module="Codilar_HelloWorld"
+        />
+        <add id="Codilar_HelloWorld:menu_item2" title="menu item2" parent="Codilar_HelloWorld::menu" sortOrder="2"
+             action="test/post/index"
+             resource="Codilar_HelloWorld::menu_item2"
+             module="Codilar_HelloWorld"
+        />
+    </menu>
+</config>

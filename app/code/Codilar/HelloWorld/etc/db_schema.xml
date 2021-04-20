@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table comment="hello world post" engine="innodb" name="helloworld_post" resource="default">
+        <column comment="id" identity="true" name="id" nullable="false" padding="6" unsigned="false" xsi:type="int"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="id"/>
+        </constraint>
+        <column length="50" name="name" nullable="false" default=" " xsi:type="varchar" comment="名称"/>
+        <column length="50" name="url_key" nullable="false" default=" " xsi:type="varchar" comment="网址"/>
+        <column length="50" name="post_content" nullable="false" default=" " xsi:type="varchar" comment="内容"/>
+        <column length="50" name="tags" nullable="false" default=" " xsi:type="varchar" comment="标签"/>
+        <column name="status" nullable="false" default="1" xsi:type="boolean"/>
+        <column default="CURRENT_TIMESTAMP" name="created_at" nullable="true" xsi:type="timestamp"/>
+        <column default="CURRENT_TIMESTAMP" name="updated_at" nullable="true" xsi:type="timestamp"/>
+    </table>
+</schema>
