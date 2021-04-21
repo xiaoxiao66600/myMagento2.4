@@ -35,11 +35,11 @@ interface PostInterface
     public function getTags();
 
     /**
-     * Get url_content
+     * Get post_content
      *
      * @return string|null
      */
-    public function getUrlContent();
+    public function getPostContent();
 
     /**
      * Get creation time
@@ -83,12 +83,12 @@ interface PostInterface
     public function setTags($tags);
 
     /**
-     * Set url_content
+     * Set post_content
      *
-     * @param string $urlContent
+     * @param string $postContent
      * @return PostInterface
      */
-    public function setUrlContent($urlContent);
+    public function setPostContent($postContent);
 
     /**
      * Set creation time

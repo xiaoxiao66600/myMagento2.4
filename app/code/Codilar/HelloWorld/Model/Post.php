@@ -27,7 +27,7 @@ class Post extends AbstractModel implements PostInterface,IdentityInterface
         return $this->getData('tags');
     }
 
-    public function getUrlContent()
+    public function getPostContent()
     {
         return $this->getData('post_content');
     }
@@ -52,9 +52,9 @@ class Post extends AbstractModel implements PostInterface,IdentityInterface
         return $this->setData('tags', $tags);
     }
 
-    public function setUrlContent($urlContent)
+    public function setPostContent($postContent)
     {
-        return $this->setData('post_content', $urlContent);
+        return $this->setData('post_content', $postContent);
     }
 
     public function setCreatedAt($creationTime)
