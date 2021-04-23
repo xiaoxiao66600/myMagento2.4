@@ -1,0 +1,24 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Codilar\WebApi\Api\PostRepositoryInterface"
+                type="Codilar\WebApi\Model\PostRepository" />
+
+    <preference for="Codilar\WebApi\Api\Data\PostSearchResultsInterface"
+                type="Codilar\WebApi\Model\PostSearchResults" />
+
+    <preference for="Codilar\WebApi\Api\Data\PostInterface"
+                type="Codilar\WebApi\Model\Post" />
+    <virtualType name="Codilar\WeApi\Model\Api\SearchCriteria\PostCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Codilar\WeApi\Model\Api\SearchCriteria\CollectionProcessor\PostFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Codilar\WeApi\Model\PostRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Codilar\WeApi\Model\Api\SearchCriteria\PostCollectionProcessor</argument>
+        </arguments>
+    </type>
+</config>

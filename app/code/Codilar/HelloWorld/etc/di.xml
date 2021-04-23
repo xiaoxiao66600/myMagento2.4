@@ -22,7 +22,7 @@
     <virtualType name="Magento\Cms\Model\Api\SearchCriteria\PostCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\BlockFilterProcessor</item>
+                <item name="filters" xsi:type="object">Codilar\HelloWorld\Model\Api\SearchCriteria\CollectionProcessor\BlockFilterProcessor</item>
                 <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
                 <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
             </argument>

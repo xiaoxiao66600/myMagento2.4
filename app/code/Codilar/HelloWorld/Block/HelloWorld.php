@@ -14,10 +14,7 @@ use Magento\Framework\View\Element\Template;
 
 class HelloWorld extends Template
 {
-    /**
-     * @var Data
-     */
-    private Data $helpData;
+    private $helpData;
 
     public function __construct(Template\Context $context, array $data = [], Data $helpData)
     {

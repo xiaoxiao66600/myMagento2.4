@@ -90,7 +90,7 @@ class PostRepository implements PostRepositoryInterface
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
         StoreManagerInterface $storeManager,
-        CollectionProcessorInterface $collectionProcessor
+        CollectionProcessorInterface $collectionProcessor = null
     ) {
         $this->resource = $resource;
         $this->postFactory = $postFactory;
