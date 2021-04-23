@@ -47,11 +47,11 @@ class PostRepository implements PostRepositoryInterface
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @param \Magento\Framework\Api\SearchCriteriaInterface $criteria
-     * @return Codilar\WeApi\Api\Data\PostSearchResultsInterface
+     * @return Codilar\WebApi\Api\Data\PostSearchResultsInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $criteria)
     {
-        /** @var Codilar\WeApi\Model\ResourceModel\Post\Collection $collection */
+        /** @var Codilar\WebApi\Model\ResourceModel\Post\Collection $collection */
         $collection = $this->collectionFactory->create();
         $this->collectionProcessor->process($criteria, $collection);
         /** @var Data\PostSearchResultsInterface $searchResults */
@@ -72,7 +72,7 @@ class PostRepository implements PostRepositoryInterface
     {
         if (!$this->collectionProcessor) {
             $this->collectionProcessor = \Magento\Framework\App\ObjectManager::getInstance()->get(
-                'Codilar\WeApi\Model\Api\SearchCriteria\PostCollectionProcessor'
+                'Codilar\WebApi\Model\Api\SearchCriteria\PostCollectionProcessor'
             );
         }
         return $this->collectionProcessor;

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Codilar\WeApi\Model;
+namespace Codilar\WebApi\Model;
 
-use Codilar\WeApi\Api\Data\PostSearchResultsInterface;
+use Codilar\WebApi\Api\Data\PostSearchResultsInterface;
 use Magento\Framework\Api\SearchResults;
 
 /**

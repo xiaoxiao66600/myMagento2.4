@@ -7,18 +7,26 @@
 
     <preference for="Codilar\WebApi\Api\Data\PostInterface"
                 type="Codilar\WebApi\Model\Post" />
-    <virtualType name="Codilar\WeApi\Model\Api\SearchCriteria\PostCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+
+    <virtualType name="Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\PostFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="store_id" xsi:type="object">Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\PostStoreFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Codilar\WebApi\Model\Api\SearchCriteria\PostCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Codilar\WeApi\Model\Api\SearchCriteria\CollectionProcessor\PostFilterProcessor</item>
+                <item name="filters" xsi:type="object">Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\PostFilterProcessor</item>
                 <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
                 <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Codilar\WeApi\Model\PostRepository">
+    <type name="Codilar\WebApi\Model\PostRepository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Codilar\WeApi\Model\Api\SearchCriteria\PostCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Codilar\WebApi\Model\Api\SearchCriteria\PostCollectionProcessor</argument>
         </arguments>
     </type>
 </config>

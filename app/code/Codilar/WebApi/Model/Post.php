@@ -1,14 +1,14 @@
 <?php
-namespace Codilar\WeApi\Model;
-use Codilar\WeApi\Api\Data\PostInterface;
+namespace Codilar\WebApi\Model;
+use Codilar\WebApi\Api\Data\PostInterface;
 use \Magento\Framework\Model\AbstractModel;
 use \Magento\Framework\DataObject\IdentityInterface;
 class Post extends AbstractModel implements PostInterface,IdentityInterface
 {
-    const CACHE_TAG = 'codilar_WeApi_post';
+    const CACHE_TAG = 'codilar_WebApi_post';
     protected function _construct()
     {
-        $this->_init('Codilar\WeApi\Model\ResourceModel\Post');
+        $this->_init('Codilar\WebApi\Model\ResourceModel\Post');
     }
 
     public function getIdentities()

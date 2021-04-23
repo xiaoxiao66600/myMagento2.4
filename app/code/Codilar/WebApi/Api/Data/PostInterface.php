@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Codilar\WeApi\Api\Data;
+namespace Codilar\WebApi\Api\Data;
 
 /**
  * CMS block interface.

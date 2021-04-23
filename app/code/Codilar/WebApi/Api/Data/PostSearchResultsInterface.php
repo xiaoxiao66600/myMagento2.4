@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Codilar\WeApi\Api\Data;
+namespace Codilar\WebApi\Api\Data;
 
 use Magento\Framework\Api\SearchResultsInterface;
 
@@ -17,14 +17,14 @@ interface PostSearchResultsInterface extends SearchResultsInterface
     /**
      * Get posts list.
      *
-     * @return \Codilar\WeApi\Api\Data\PostInterface[]
+     * @return \Codilar\WebApi\Api\Data\PostInterface[]
      */
     public function getItems();
 
     /**
      * Set posts list.
      *
-     * @param \Codilar\WeApi\Api\Data\PostInterface[] $items
+     * @param \Codilar\WebApi\Api\Data\PostInterface[] $items
      * @return $this
      */
     public function setItems(array $items);

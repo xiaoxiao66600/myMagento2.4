@@ -9,7 +9,7 @@ class Config extends \Magento\Framework\App\Action\Action
     /**
      * @var PageFactory
      */
-    private PageFactory $pageFactory;
+    private $pageFactory;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,

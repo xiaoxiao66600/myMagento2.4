@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Codilar\WeApi\Model\ResourceModel\Post;
+namespace Codilar\WebApi\Model\ResourceModel\Post;
 
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
@@ -15,7 +15,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('Codilar\WeApi\Model\Post', 'Codilar\WeApi\Model\ResourceModel\Post');
+        $this->_init('Codilar\WebApi\Model\Post', 'Codilar\WebApi\Model\ResourceModel\Post');
     }
 
 }

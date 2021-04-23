@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Codilar\WeApi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor;
+namespace Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor;
 
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterInterface;
@@ -20,7 +20,7 @@ class PostStoreFilter implements CustomFilterInterface
      */
     public function apply(Filter $filter, AbstractDb $collection)
     {
-        /** @var Codilar\WeApi\Model\ResourceModel\Post\Collection $collection */
+        /** @var Codilar\WebApi\Model\ResourceModel\Post\Collection $collection */
         $collection->addStoreFilter($filter->getValue(), false);
 
         return true;

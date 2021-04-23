@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Codilar\WeApi\Model\ResourceModel;
+namespace Codilar\WebApi\Model\ResourceModel;
 
 
 class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
