@@ -9,12 +9,12 @@
                 type="Codilar\WebApi\Model\Post" />
 
     <virtualType name="Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\PostFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
-        <arguments>
-            <argument name="customFilters" xsi:type="array">
-                <item name="store_id" xsi:type="object">Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\PostStoreFilter</item>
-            </argument>
-        </arguments>
-    </virtualType>
+    <arguments>
+        <argument name="customFilters" xsi:type="array">
+            <item name="store_id" xsi:type="object">Codilar\WebApi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\PostStoreFilter</item>
+        </argument>
+    </arguments>
+</virtualType>
     <virtualType name="Codilar\WebApi\Model\Api\SearchCriteria\PostCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">

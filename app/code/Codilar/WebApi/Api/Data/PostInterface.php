@@ -71,7 +71,7 @@ interface PostInterface
      * @param string $urlKey
      * @return PostInterface
      */
-    public function setUrlkey($urlKey);
+    public function setUrlKey($urlKey);
 
 
     /**

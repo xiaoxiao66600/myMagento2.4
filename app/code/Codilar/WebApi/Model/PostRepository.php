@@ -7,10 +7,13 @@
 namespace Codilar\WebApi\Model;
 
 
+use Codilar\WebApi\Api\Data\PostInterface;
 use Codilar\WebApi\Api\Data\PostSearchResultsInterfaceFactory;
 use Codilar\WebApi\Model\ResourceModel\Post\CollectionFactory;
 use Codilar\WebApi\Api\PostRepositoryInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Store\Model\StoreManagerInterface;
 
 
 class PostRepository implements PostRepositoryInterface
@@ -28,21 +31,33 @@ class PostRepository implements PostRepositoryInterface
      * @var CollectionProcessor|null
      */
     private $collectionProcessor;
+    /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+    /**
+     * @var ResourceModel\Post
+     */
+    private $postResource;
 
     public function __construct(
         CollectionFactory $collectionFactory,
         PostSearchResultsInterfaceFactory $resultsInterfaceFactory,
+        StoreManagerInterface $storeManager,
+        \Codilar\WebApi\Model\ResourceModel\Post $postResource,
         CollectionProcessor $collectionProcessor = null
     ) {
 
         $this->collectionFactory = $collectionFactory;
         $this->resultsInterfaceFactory = $resultsInterfaceFactory;
         $this->collectionProcessor = $collectionProcessor?:$this->getCollectionProcessor();
+        $this->storeManager = $storeManager;
+        $this->postResource = $postResource;
     }
 
 
     /**
-     * Load Block data collection by given search criteria
+     * Load Post data collection by given search criteria
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -76,6 +91,29 @@ class PostRepository implements PostRepositoryInterface
             );
         }
         return $this->collectionProcessor;
+    }
+
+    /**
+     * Save Post data
+     *
+     * @param Codilar\WebApi\Api\Data\PostInterface $post
+     * @return $post
+     * @throws CouldNotSaveException
+     */
+    public function save(PostInterface $post)
+    {
+        if(!$post->getUrlKey()){
+            throw new CouldNotSaveException(__("url_key required"));
+        }
+        if(!$post->getTags()){
+            throw new CouldNotSaveException(__("tags required"));
+        }
+        try {
+            $this->postResource->save($post);
+        } catch (\Exception $exception) {
+            throw new CouldNotSaveException(__($exception->getMessage()));
+        }
+        return $post;
     }
 
 }

@@ -21,4 +21,13 @@ interface PostRepositoryInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
 
+    /**
+     * Save post.
+     *
+     * @param \Codilar\WebApi\Api\Data\PostInterface $post
+     * @return \Codilar\WebApi\Api\Data\PostInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function save(Data\PostInterface $post);
+
 }

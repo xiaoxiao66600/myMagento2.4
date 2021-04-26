@@ -42,7 +42,7 @@ class Post extends AbstractModel implements PostInterface,IdentityInterface
         return $this->getData('updated_at');
     }
 
-    public function setUrlkey($urlKey)
+    public function setUrlKey($urlKey)
     {
         return $this->setData('url_key', $urlKey);
     }

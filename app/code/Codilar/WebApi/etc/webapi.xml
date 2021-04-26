@@ -7,11 +7,18 @@
 -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
-    <route url="/V1/Post/list" method="GET">
+    <route url="/V1/post/list" method="GET">
         <service class="Codilar\WebApi\Api\PostRepositoryInterface" method="getList"/>
         <resources>
 <!--            匿名资源，可用访客身份-->
             <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/posts" method="POST">
+        <service class="Codilar\WebApi\Api\PostRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Codilar_WebApi::post_save"/>
+<!--            <resource ref="anonymous"/>-->
         </resources>
     </route>
 </routes>
