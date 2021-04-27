@@ -31,10 +31,7 @@ class PostRepository implements PostRepositoryInterface
      * @var CollectionProcessor|null
      */
     private $collectionProcessor;
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
+
     /**
      * @var ResourceModel\Post
      */
@@ -43,7 +40,6 @@ class PostRepository implements PostRepositoryInterface
     public function __construct(
         CollectionFactory $collectionFactory,
         PostSearchResultsInterfaceFactory $resultsInterfaceFactory,
-        StoreManagerInterface $storeManager,
         \Codilar\WebApi\Model\ResourceModel\Post $postResource,
         CollectionProcessor $collectionProcessor = null
     ) {
@@ -51,7 +47,6 @@ class PostRepository implements PostRepositoryInterface
         $this->collectionFactory = $collectionFactory;
         $this->resultsInterfaceFactory = $resultsInterfaceFactory;
         $this->collectionProcessor = $collectionProcessor?:$this->getCollectionProcessor();
-        $this->storeManager = $storeManager;
         $this->postResource = $postResource;
     }
 

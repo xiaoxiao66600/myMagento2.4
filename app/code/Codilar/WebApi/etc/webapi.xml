@@ -18,7 +18,6 @@
         <service class="Codilar\WebApi\Api\PostRepositoryInterface" method="save"/>
         <resources>
             <resource ref="Codilar_WebApi::post_save"/>
-<!--            <resource ref="anonymous"/>-->
         </resources>
     </route>
 </routes>
