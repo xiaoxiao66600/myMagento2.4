@@ -494,7 +494,7 @@ class Customer extends \Magento\Framework\Api\AbstractExtensibleObject implement
     /**
      * @inheritdoc
      *
-     * @return \Magento\Customer\Api\Data\CustomerExtensionInterface|null
+     * @return \Codilar\Customer\Api\Data\CustomerExtensionInterface|null
      */
     public function getExtensionAttributes()
     {
@@ -504,7 +504,7 @@ class Customer extends \Magento\Framework\Api\AbstractExtensibleObject implement
     /**
      * @inheritdoc
      *
-     * @param \Magento\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes
+     * @param \Codilar\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(\Magento\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes)

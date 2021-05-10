@@ -108,7 +108,7 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
     /**
      * Check customer scope, email and confirmation key before saving
      *
-     * @param \Magento\Framework\DataObject|\Magento\Customer\Api\Data\CustomerInterface $customer
+     * @param \Magento\Framework\DataObject|\Codilar\Customer\Api\Data\CustomerInterface $customer
      *
      * @return $this
      * @throws AlreadyExistsException
@@ -119,7 +119,7 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
      */
     protected function _beforeSave(\Magento\Framework\DataObject $customer)
     {
-        /** @var \Magento\Customer\Model\Customer $customer */
+        /** @var \Codilar\Customer\Model\Customer $customer */
         if ($customer->getStoreId() === null) {
             $customer->setStoreId($this->storeManager->getStore()->getId());
         }
@@ -181,7 +181,7 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
     /**
      * Validate customer entity
      *
-     * @param \Magento\Customer\Model\Customer $customer
+     * @param \Codilar\Customer\Model\Customer $customer
      * @return void
      * @throws ValidatorException
      */
@@ -246,12 +246,12 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
     /**
      * Load customer by email
      *
-     * @param \Magento\Customer\Model\Customer $customer
+     * @param \Codilar\Customer\Model\Customer $customer
      * @param string $email
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function loadByEmail(\Magento\Customer\Model\Customer $customer, $email)
+    public function loadByEmail(\Codilar\Customer\Model\Customer $customer, $email)
     {
         $connection = $this->getConnection();
         $bind = ['customer_email' => $email];
@@ -285,11 +285,11 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
     /**
      * Change customer password
      *
-     * @param \Magento\Customer\Model\Customer $customer
+     * @param \Codilar\Customer\Model\Customer $customer
      * @param string $newPassword
      * @return $this
      */
-    public function changePassword(\Magento\Customer\Model\Customer $customer, $newPassword)
+    public function changePassword(\Codilar\Customer\Model\Customer $customer, $newPassword)
     {
         $customer->setPassword($newPassword);
         return $this;
@@ -375,7 +375,7 @@ class Customer extends \Magento\Eav\Model\Entity\VersionControl\AbstractEntity
     public function setNewIncrementId(\Magento\Framework\DataObject $object)
     {
         if ($this->_scopeConfig->getValue(
-            \Magento\Customer\Model\Customer::XML_PATH_GENERATE_HUMAN_FRIENDLY_ID,
+            \Codilar\Customer\Model\Customer::XML_PATH_GENERATE_HUMAN_FRIENDLY_ID,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         )
         ) {

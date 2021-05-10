@@ -84,7 +84,7 @@ class Collection extends \Magento\Eav\Model\Entity\Collection\VersionControl\Abs
      */
     protected function _construct()
     {
-        $this->_init($this->_modelName, \Magento\Customer\Model\ResourceModel\Customer::class);
+        $this->_init($this->_modelName, \Codilar\Customer\Model\ResourceModel\Customer::class);
     }
 
     /**

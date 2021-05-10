@@ -16,7 +16,6 @@ use Codilar\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Delegation\Data\NewOperation;
 use Magento\Customer\Model\Delegation\Storage as DelegatedStorage;
 use Magento\Customer\Model\ResourceModel\AddressRepository;
-use Magento\Customer\Model\ResourceModel\Customer;
 use Magento\Framework\Api\ImageProcessorInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
@@ -26,6 +25,7 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
+use Codilar\Customer\Model\ResourceModel\Customer as CustomerResource;
 
 
 /**
@@ -85,6 +85,7 @@ class CustomerRepository implements CustomerRepositoryInterface
      * @var ManagerInterface
      */
     protected $eventManager;
+    private \Codilar\Customer\Model\ResourceModel\Customer $customerResource;
 
     public function __construct(
         DelegatedStorage $delegatedStorage,
@@ -96,6 +97,7 @@ class CustomerRepository implements CustomerRepositoryInterface
         CustomerFactory $customerFactory,
         AddressRepository $addressRepository,
         ManagerInterface $eventManager,
+        CustomerResource $customerResource,
         ?GroupRepositoryInterface $groupRepository = null
     ) {
 
@@ -109,6 +111,7 @@ class CustomerRepository implements CustomerRepositoryInterface
         $this->customerFactory = $customerFactory;
         $this->groupRepository = $groupRepository ?: ObjectManager::getInstance()->get(GroupRepositoryInterface::class);
         $this->addressRepository = $addressRepository;
+        $this->customerResource = $customerResource;
     }
 
     /**
@@ -144,6 +147,7 @@ class CustomerRepository implements CustomerRepositoryInterface
         $customerData = $this->extensibleDataObjectConverter->toNestedArray($customer, [], CustomerInterface::class);
         $customer->setAddresses($origAddresses);
         /** @var CustomerModel $customerModel */
+
         $customerModel = $this->customerFactory->create(['data' => $customerData]);
         //Model's actual ID field maybe different than "id" so "id" field from $customerData may be ignored.
         $customerModel->setId($customer->getId());
@@ -178,10 +182,11 @@ class CustomerRepository implements CustomerRepositoryInterface
             $customerModel->setDefaultShipping($prevCustomerDataArr['default_shipping']);
         }
         $this->setValidationFlag($customerArr, $customerModel);
+
         $customerModel->save();
+
         $this->customerRegistry->push($customerModel);
         $customerId = $customerModel->getId();
-        echo $customerId;exit;
         if (!$customer->getAddresses()
             && $delegatedNewOperation
             && $delegatedNewOperation->getCustomer()->getAddresses()

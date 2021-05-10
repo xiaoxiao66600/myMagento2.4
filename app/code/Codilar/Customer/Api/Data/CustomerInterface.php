@@ -356,14 +356,14 @@ interface CustomerInterface extends \Magento\Framework\Api\CustomAttributesDataI
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
-     * @return \Magento\Customer\Api\Data\CustomerExtensionInterface|null
+     * @return \Codilar\Customer\Api\Data\CustomerExtensionInterface|null
      */
     public function getExtensionAttributes();
 
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes
+     * @param \Codilar\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(\Magento\Customer\Api\Data\CustomerExtensionInterface $extensionAttributes);

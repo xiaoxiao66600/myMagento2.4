@@ -15,7 +15,7 @@ use Magento\Customer\Model\AddressFactory;
 use Magento\Customer\Model\Attribute;
 use Magento\Customer\Model\Config\Share;
 use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
-use Magento\Customer\Model\ResourceModel\Customer as ResourceCustomer;
+use Codilar\Customer\Model\ResourceModel\Customer as ResourceCustomer;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\EmailNotConfirmedException;
@@ -268,7 +268,7 @@ class Customer extends \Magento\Framework\Model\AbstractModel
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Eav\Model\Config $config,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Customer\Model\ResourceModel\Customer $resource,
+        \Codilar\Customer\Model\ResourceModel\Customer $resource,
         \Magento\Customer\Model\Config\Share $configShare,
         \Magento\Customer\Model\AddressFactory $addressFactory,
         \Magento\Customer\Model\ResourceModel\Address\CollectionFactory $addressesFactory,
@@ -333,7 +333,7 @@ class Customer extends \Magento\Framework\Model\AbstractModel
      */
     public function _construct()
     {
-        $this->_init(\Magento\Customer\Model\ResourceModel\Customer::class);
+        $this->_init(\Codilar\Customer\Model\ResourceModel\Customer::class);
     }
 
     /**
@@ -366,14 +366,14 @@ class Customer extends \Magento\Framework\Model\AbstractModel
     /**
      * Update customer data
      *
-     * @param \Magento\Customer\Api\Data\CustomerInterface $customer
+     * @param \Codilar\Customer\Api\Data\CustomerInterface $customer
      * @return $this
      */
     public function updateData($customer)
     {
         $customerDataAttributes = $this->dataObjectProcessor->buildOutputDataArray(
             $customer,
-            \Magento\Customer\Api\Data\CustomerInterface::class
+            \Codilar\Customer\Api\Data\CustomerInterface::class
         );
 
         foreach ($customerDataAttributes as $attributeCode => $attributeData) {
@@ -415,7 +415,7 @@ class Customer extends \Magento\Framework\Model\AbstractModel
      * @param  string $password
      * @return bool
      * @throws \Magento\Framework\Exception\LocalizedException
-     * Use \Magento\Customer\Api\AccountManagementInterface::authenticate
+     * Use \Codilar\Customer\Api\AccountManagementInterface::authenticate
      */
     public function authenticate($login, $password)
     {
