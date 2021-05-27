@@ -61,3 +61,6 @@ RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
 
 </IfModule>
 打开后台， http://magento241.cn/admin (admin为安装时backend-frontname对应参数 可在app/etc/env.php中查看bakend['frontname']值，登录账号密码为安装时对应admin账号密码)
+
+拉取git代码， 到项目根目录
+php bin/magento setup:upgrade
