@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="customer_address_entity">
+		<column xsi:type="varchar" name="district" nullable="true" length="255" comment="State/Province"/>
+		<column xsi:type="int" name="district_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+		<column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+        <column xsi:type="varchar" name="area_code" nullable="true" length="18" comment="国家手机号区号 如86"/>
+	</table>
+	<table name="quote_address">
+		<column xsi:type="varchar" name="district" nullable="true" length="255" comment="State/Province"/>
+		<column xsi:type="int" name="district_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+		<column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+	</table>
+	<table name="sales_order_address">
+		<column xsi:type="varchar" name="district" nullable="true" length="255" comment="State/Province"/>
+		<column xsi:type="int" name="district_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+		<column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="true" identity="false" comment="State/Province"/>
+	</table>
+
+<!--    cities-->
+    <table name="codilar_directory_country_city" resource="default" engine="innodb" comment="Directory Country City">
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="City ID"/>
+        <column xsi:type="int" name="region_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Region ID"/>
+        <column xsi:type="varchar" name="code" nullable="true" length="32" comment="City code"/>
+        <column xsi:type="varchar" name="default_name" nullable="true" length="255" comment="city Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="city_id"/>
+        </constraint>
+        <index referenceId="DIRECTORY_COUNTRY_REGION_REGION_ID" indexType="btree">
+            <column name="region_id"/>
+        </index>
+    </table>
+    <table name="codilar_directory_country_city_name" resource="default" engine="innodb"
+           comment="Directory Country City Name">
+        <column xsi:type="varchar" name="locale" nullable="false" length="24" comment="Locale"/>
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="City ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="City Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="locale"/>
+            <column name="city_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DIR_COUNTRY_CITY_NAME_CITY_ID_DIREC_COUNTRY_CITY_CITY_ID"
+                    table="codilar_directory_country_city_name" column="city_id" referenceTable="codilar_directory_country_city"
+                    referenceColumn="city_id" onDelete="CASCADE"/>
+        <index referenceId="CODILAR_DIRECTORY_COUNTRY_CITY_NAME_CITY_ID" indexType="btree">
+            <column name="city_id"/>
+        </index>
+    </table>
+
+    <table name="codilar_directory_country_district" resource="default" engine="innodb" comment="Directory Country District">
+        <column xsi:type="int" name="district_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="District ID"/>
+        <column xsi:type="int" name="city_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="City ID"/>
+        <column xsi:type="varchar" name="code" nullable="true" length="32" comment="District code"/>
+        <column xsi:type="varchar" name="default_name" nullable="true" length="255" comment="District Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="district_id"/>
+        </constraint>
+        <index referenceId="CODILAR_DIRECTORY_COUNTRY_CITY_CITY_ID" indexType="btree">
+            <column name="city_id"/>
+        </index>
+    </table>
+    <table name="codilar_directory_country_district_name" resource="default" engine="innodb"
+           comment="Directory Country district Name">
+        <column xsi:type="varchar" name="locale" nullable="false" length="24" comment="Locale"/>
+        <column xsi:type="int" name="district_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="District ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="District Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="locale"/>
+            <column name="district_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DIR_COUNTRY_DISTRICT_NAME_DISTRICT_ID_DIR_COUNTRY_DISTRICT_DISTRICT_ID"
+                    table="codilar_directory_country_district_name" column="district_id" referenceTable="codilar_directory_country_district"
+                    referenceColumn="district_id" onDelete="CASCADE"/>
+        <index referenceId="CODILAR_DIRECTORY_COUNTRY_DISTRICT_NAME_DISTRICT_ID" indexType="btree">
+            <column name="district_id"/>
+        </index>
+    </table>
+
+    <table name="directory_country_region_name" resource="default" engine="innodb"
+           comment="Directory Country district Name">
+        <column xsi:type="varchar" name="locale" nullable="false" length="24" comment="Locale"/>
+    </table>
+
+</schema>
