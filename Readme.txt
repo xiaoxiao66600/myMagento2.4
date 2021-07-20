@@ -1,4 +1,4 @@
-安装步骤：
+windows安装步骤：
 mysql8.x  apache2.4.x  php7.4.x  elasticsearch7.x  composer2.x
 Enable php Extesion : intl , soap ,socket ,xls ,sodium
 
